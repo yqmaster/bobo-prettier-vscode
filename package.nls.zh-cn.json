@@ -29,6 +29,7 @@
   "ext.config.useTabs": "使用制表符缩进，而不是空格缩进。",
   "ext.config.vueIndentScriptAndStyle": "缩进 Vue SFC 文件中的 `<script>` 和 `<style>` 标签。",
   "ext.config.embeddedLanguageFormatting": "控制嵌入的其他语言代码格式化。",
+  "ext.config.ignoreImportDeclaration": "对代码格式化会自动跳过import，目前只会ts生效",
   "ext.config.enable": "启用 Prettier。",
   "ext.config.enableDebugLogs": "启用调试日志。",
   "ext.capabilities.untrustedWorkspaces.description": "在不受信任模式下只会使用内置的 Prettier 版本。"

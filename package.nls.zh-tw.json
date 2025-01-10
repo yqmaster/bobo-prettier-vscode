@@ -36,5 +36,6 @@
   "ext.config.embeddedLanguageFormatting": "控制 Prettier 是否要針對遷入在檔案內的引用程式碼進行排版。",
   "ext.config.enable": "控制 prettier 啟用與否。",
   "ext.config.enableDebugLogs": "啟用偵錯紀錄來協助疑難排解。",
+  "ext.config.ignoreImportDeclaration": "對代碼格式化會自動跳過import，目前只會ts生效",
   "ext.capabilities.untrustedWorkspaces.description": "在非信任模式中只會用內建的 Prettier 版本。"
 }

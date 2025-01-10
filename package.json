@@ -1,9 +1,9 @@
 {
-  "name": "prettier-vscode",
-  "displayName": "Prettier - Code formatter",
+  "name": "prettier-vscode-ignore-typescript-import",
+  "displayName": "Prettier - With TypeScript Import Ignored",
   "description": "Code formatter using prettier",
   "version": "11.0.0",
-  "publisher": "esbenp",
+  "publisher": "Hanabi",
   "author": "Prettier <@prettiercode>",
   "galleryBanner": {
     "color": "#ffe04b",
@@ -15,7 +15,7 @@
   "homepage": "https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode",
   "repository": {
     "type": "git",
-    "url": "https://github.com/prettier/prettier-vscode.git"
+    "url": "https://github.com/yqmaster/bobo-prettier-vscode.git"
   },
   "license": "MIT",
   "bugs": {
@@ -389,6 +389,12 @@
           "default": "auto",
           "markdownDescription": "%ext.config.embeddedLanguageFormatting%",
           "scope": "language-overridable"
+        },
+        "prettier.ignoreImportDeclaration": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "%ext.config.ignoreImportDeclaration%",
+          "scope": "resource"
         },
         "prettier.experimentalTernaries": {
           "type": "boolean",

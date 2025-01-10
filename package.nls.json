@@ -31,6 +31,7 @@
   "ext.config.semi": "Whether to add a semicolon at the end of every line.",
   "ext.config.singleQuote": "Use single instead of double quotes.",
   "ext.config.tabWidth": "Number of spaces it should use per tab.",
+  "ext.config.ignoreImportDeclaration": "ignore import declarations format(only support ts)",
   "ext.config.title": "Prettier",
   "ext.config.trailingComma": "Controls the printing of trailing commas wherever possible. \nValid options:\n- `none` - No trailing commas\n- `es5` - Trailing commas where valid in ES5 (objects, arrays, etc)\n- `all` - Trailing commas wherever possible (function arguments)",
   "ext.config.useEditorConfig": "Whether or not to take `.editorconfig` into account when parsing configuration. See the [`prettier.resolveConfig`](https://prettier.io/docs/en/api.html) docs for details.",

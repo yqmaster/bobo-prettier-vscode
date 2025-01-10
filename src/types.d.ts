@@ -13,7 +13,10 @@ type PrettierFileInfoResult = {
 };
 type PrettierBuiltInParserName = string;
 type PrettierResolveConfigOptions = prettier.ResolveConfigOptions;
-type PrettierOptions = prettier.Options & { experimentalTernaries?: boolean };
+type PrettierOptions = prettier.Options & {
+  experimentalTernaries?: boolean;
+  ignoreImportDeclaration?: boolean;
+};
 type PrettierFileInfoOptions = prettier.FileInfoOptions;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type PrettierPlugin = prettier.Plugin<any>;
@@ -103,6 +106,10 @@ interface IExtensionConfig {
    * If true, enabled debug logs
    */
   enableDebugLogs: boolean;
+  /**
+   * If true, skip format import declaration
+   */
+  ignoreImportDeclaration: boolean;
 }
 /**
  * Configuration for prettier-vscode

@@ -26,7 +26,7 @@ import {
   PrettierPlugin,
   RangeFormattingOptions,
 } from "./types";
-import { getConfig, isAboveV3 } from "./util";
+import { getConfig, isAboveV3, getCursorIndexSkipImport } from "./util";
 
 interface ISelectors {
   rangeLanguageSelector: ReadonlyArray<DocumentFilter>;
@@ -498,6 +498,7 @@ export default class PrettierEditService implements Disposable {
 
     const prettierOptions = this.getPrettierOptions(
       fileName,
+      text,
       parser as PrettierBuiltInParserName,
       vscodeConfig,
       resolvedConfig,
@@ -525,6 +526,7 @@ export default class PrettierEditService implements Disposable {
 
   private getPrettierOptions(
     fileName: string,
+    content: string,
     parser: PrettierBuiltInParserName,
     vsCodeConfig: PrettierOptions,
     configOptions: PrettierOptions | null,
@@ -556,6 +558,7 @@ export default class PrettierEditService implements Disposable {
         vsCodeConfig.embeddedLanguageFormatting;
       vsOpts.vueIndentScriptAndStyle = vsCodeConfig.vueIndentScriptAndStyle;
       vsOpts.experimentalTernaries = vsCodeConfig.experimentalTernaries;
+      vsOpts.ignoreImportDeclaration = vsCodeConfig.ignoreImportDeclaration;
     }
 
     this.loggingService.logInfo(
@@ -573,6 +576,21 @@ export default class PrettierEditService implements Disposable {
         rangeEnd: extensionFormattingOptions.rangeEnd,
         rangeStart: extensionFormattingOptions.rangeStart,
       };
+    } else if (vsCodeConfig.ignoreImportDeclaration) {
+      const extension = fileName.split(".").pop();
+      if (extension === "ts" || extension === "tsx") {
+        const rangeStart = getCursorIndexSkipImport(fileName, content);
+        if (rangeStart) {
+          rangeFormattingOptions = {
+            rangeEnd: Number.MAX_SAFE_INTEGER,
+            rangeStart: rangeStart,
+          };
+          this.loggingService.logInfo(
+            "New RangeFormattingOptions:",
+            rangeFormattingOptions
+          );
+        }
+      }
     }
 
     const options: PrettierOptions = {
